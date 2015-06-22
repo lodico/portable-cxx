@@ -27,6 +27,10 @@
 the usage of platform-locked fopen_s() instead of fopen(). */
 #define _CRT_SECURE_NO_WARNINGS
 
+#ifndef sqr
+#define sqr(n) (n * n)
+#endif//sqr
+
 /* BEGIN: Portable Types */
 #if defined(__cplusplus)
 namespace portable {
