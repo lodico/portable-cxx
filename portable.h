@@ -38,11 +38,15 @@ namespace portable {
     #define INT64 long long
     #endif
 
+    #define FLT64 double
+
     /* Normal */
     typedef          char  int8;
     typedef          short int16;
     typedef          int   int32;
     typedef          INT64 int64;
+    typedef          float flt32;
+    typedef          FLT64 flt64;
 
     /* Unsigned */
     typedef unsigned char  uint8;
