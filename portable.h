@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2014 Robert Lodico
+    Copyright (c) 2018 Robert Lodico
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
     THE SOFTWARE.
 */
 
+#pragma once
+
 #ifndef H_PORTABLE
 #define H_PORTABLE
 
@@ -27,9 +29,13 @@
 the usage of platform-locked fopen_s() instead of fopen(). */
 #define _CRT_SECURE_NO_WARNINGS
 
+#ifdef H_PORTABLE_EXPOSE_MATH
+
 #ifndef sqr
 #define sqr(n) (n * n)
 #endif//sqr
+
+#endif//H_PORTABLE_EXPOSE_MATH
 
 /* BEGIN: Portable Types */
 #if defined(__cplusplus)
@@ -79,7 +85,7 @@ namespace portable {
 /* Operating System Defines */
 #define OS_UNKNOWN -1 /* If we legitimately have no clue. */
 #define OS_U_UNIX  -2 /* If we know it's Unix, but we don't know which. */
-#define OS_U_APPLE -3 /* If we know it's Apple-crap, but don't know which. */
+#define OS_U_APPLE -3 /* If we know it's Apple, but don't know which. */
 #define OS_LINUX    0
 #define OS_ANDROID  1
 #define OS_WINDOWS  2
@@ -119,6 +125,7 @@ default value, unknown. */
     #ifndef NOMINMAX
         #define NOMINMAX
     #endif
+
 /* Apple */
 #elif defined(__APPLE__) && defined(__MACH__)
     #define PLATFORM_APPLE
@@ -137,6 +144,7 @@ default value, unknown. */
     #else
         #define DETECTED_PLATFORM OS_U_APPLE
     #endif
+
 /* Unknown */
 #else
     #define DETECTED_PLATFORM OS_UNKNOWN
